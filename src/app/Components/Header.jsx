@@ -1,10 +1,15 @@
 "use client"
 import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import './Header.css';
 export default function Navbar(){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
      const [scrolled, setScrolled] = useState(false);
      const [activeSection, setActiveSection] = useState("home");
+     const router = useRouter();
+     const pathname = usePathname();
+
+     const isProductsPage = pathname === "/category" || pathname?.startsWith("/products");
 
      const sectionIds = ["home", "about", "products", "philosophy", "contact"];
 
@@ -51,7 +56,12 @@ export default function Navbar(){
 
       const scrollTo = (id) => {
         const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // Not on home page — navigate without refresh
+          router.push(`/#${id}`);
+        }
         setIsMenuOpen(false);
       };
 
@@ -80,11 +90,11 @@ export default function Navbar(){
         </button>
 
         <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          <a href="#home" onClick={(e) => { e.preventDefault(); scrollTo("home"); }} className={activeSection === "home" ? "nav-active" : ""}>Home</a>
-          <a href="#about" onClick={(e) => { e.preventDefault(); scrollTo("about"); }} className={activeSection === "about" ? "nav-active" : ""}>About</a>
-          <a href="#products" onClick={(e) => { e.preventDefault(); scrollTo("products"); }} className={activeSection === "products" ? "nav-active" : ""}>Products</a>
-          <a href="#philosophy" onClick={(e) => { e.preventDefault(); scrollTo("philosophy"); }} className={activeSection === "philosophy" ? "nav-active" : ""}>Philosophy</a>
-          <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }} className={activeSection === "contact" ? "nav-active" : ""}>Contact</a>
+          <a href="#home" onClick={(e) => { e.preventDefault(); scrollTo("home"); }} className={(activeSection === "home" && !isProductsPage) ? "nav-active" : ""}>Home</a>
+          <a href="#about" onClick={(e) => { e.preventDefault(); scrollTo("about"); }} className={(activeSection === "about" && !isProductsPage) ? "nav-active" : ""}>About</a>
+          <a href="#products" onClick={(e) => { e.preventDefault(); scrollTo("products"); }} className={(activeSection === "products" || isProductsPage) ? "nav-active" : ""}>Products</a>
+          <a href="#philosophy" onClick={(e) => { e.preventDefault(); scrollTo("philosophy"); }} className={(activeSection === "philosophy" && !isProductsPage) ? "nav-active" : ""}>Philosophy</a>
+          <a href="/contact" onClick={(e) => { e.preventDefault(); router.push("/contact"); setIsMenuOpen(false); }} className={pathname === "/contact" ? "nav-active" : ""}>Contact</a>
           <button className="order-btn" onClick={() => setIsMenuOpen(false)}>
             Order Now
           </button>
