@@ -386,7 +386,7 @@
   .contact-image {
   width: 569px;
   margin-top: -326px;
-  margin-left: -128px;
+ margin-left: -151px;
 }
 .contact-tag {
      letter-spacing: 2px;
@@ -456,10 +456,10 @@
 
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
           .contact-section {
-        zoom: .6;
-        margin-left: 25px;
+              zoom: .6;
+        max-width: 2157px;
+        margin-left: 1px;
         padding: 164px 1%;
-        max-width: 2094px;
     }
 .contact-card h3 {
     color: #222;
@@ -521,7 +521,7 @@
     height: auto;
 
     margin-top: -143px;
-    margin-left: -196px;
+    margin-left: -255px;
 }
   .contact-right {
     flex: 1;

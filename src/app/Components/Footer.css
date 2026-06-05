@@ -276,12 +276,12 @@
 /* SMALL SCREENS (640px - 1023px) */
 @media screen and (min-width: 641px) and (max-width: 1023px) {
   .oh-foot__container {
-    width: 100%;
-    padding: 0 clamp(20px, 3vw, 40px);
-    gap: clamp(20px, 3vw, 40px);
-    grid-template-columns: repeat(2, 1fr);
-    margin-left: 0;
-    max-width: 100%;
+    grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+        gap: clamp(15px, 4vw, 36px);
+        width: 100%;
+        max-width: 100%;
+        margin-left: 45px;
+        padding: 0 clamp(0px, 0vw, 40px);
   }
 
   .oh-foot__brand {
