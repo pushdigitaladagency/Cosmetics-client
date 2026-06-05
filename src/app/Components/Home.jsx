@@ -243,7 +243,9 @@ export default function Home() {
 
           {/* CARD 1 */}
           <Link href="/category?catcode=cat001" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className={`products-card reveal-up reveal-delay-1 ${activeProduct === "Lip Care" ? "active" : ""}`}>
+            <div   className={`products-card ${
+    activeProduct === "Lip Care" ? "active" : ""
+  }`}>
 
               <img className="prd1"
                 src="/images/cat001.svg"
@@ -266,7 +268,7 @@ export default function Home() {
                     e.stopPropagation();
                     setActiveProduct(activeProduct === "Lip Care" ? null : "Lip Care");
                   }}>
-                    Discover →
+                    {activeProduct === "Lip Care" ? " " : "Discover →"}
                   </p>
                 </div>
               </div>
@@ -276,7 +278,9 @@ export default function Home() {
 
           {/* CARD 2 */}
           <Link href="/category?catcode=cat002" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className={`products-card reveal-up reveal-delay-2 ${activeProduct === "Skin Care" ? "active" : ""}`}>
+            <div   className={`products-card ${
+    activeProduct === "Skin Care" ? "active" : ""
+  }`}>
 
               <img className="prd2"
                 src="/images/cat002.svg"
@@ -299,7 +303,7 @@ export default function Home() {
                     e.stopPropagation();
                     setActiveProduct(activeProduct === "Skin Care" ? null : "Skin Care");
                   }}>
-                    Discover →
+                    {activeProduct === "Skin Care" ? " " : "Discover →"}
                   </p>
                 </div>
               </div>
@@ -309,7 +313,9 @@ export default function Home() {
 
           {/* CARD 3 */}
           <Link href="/category?catcode=cat003" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className={`products-card reveal-up reveal-delay-3 ${activeProduct === "Hair Care" ? "active" : ""}`}>
+            <div   className={`products-card ${
+    activeProduct === "Hair Care" ? "active" : ""
+  }`}>
 
               <img className="prd2"
                 src="/images/cat003.svg"
@@ -332,7 +338,7 @@ export default function Home() {
                     e.stopPropagation();
                     setActiveProduct(activeProduct === "Hair Care" ? null : "Hair Care");
                   }}>
-                    Discover →
+                    {activeProduct === "Hair Care" ? " " : "Discover →"}
                   </p>
                 </div>
               </div>
@@ -342,7 +348,9 @@ export default function Home() {
 
           {/* CARD 4 */}
           <Link href="/category?catcode=cat004" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className={`products-card reveal-up reveal-delay-4 ${activeProduct === "Hygiene" ? "active" : ""}`}>
+            <div   className={`products-card ${
+    activeProduct === "Hygiene" ? "active" : ""
+  }`}>
 
               <img className="prd2"
                 src="/images/cat004.svg"
@@ -363,9 +371,9 @@ export default function Home() {
                   <p onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    setActiveProduct(activeProduct === "Hygiene" ? null : "Hygiene");
+                   setActiveProduct("Hygiene");;
                   }}>
-                    Discover →
+                    {activeProduct === "Hygiene" ? " " : "Discover →"}
                   </p>
                 </div>
               </div>

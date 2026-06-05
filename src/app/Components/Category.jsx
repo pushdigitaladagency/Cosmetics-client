@@ -226,9 +226,24 @@ export default function Category() {
                   <div className="benefits-content">
                     <h3>Benefits</h3>
                     <ul>
-                      {productBenefits[item.name]?.map((benefit, i) => (
-                        <li key={i}>{i + 1}.{benefit}</li>
-                      ))}
+                      {Object.keys(productBenefits).find(
+                        (k) => k.toLowerCase() === item.name.toLowerCase()
+                      ) ? (
+                        productBenefits[
+                          Object.keys(productBenefits).find(
+                            (k) => k.toLowerCase() === item.name.toLowerCase()
+                          )
+                        ].map((benefit, i) => (
+                          <li key={i}>{i + 1}.{benefit}</li>
+                        ))
+                      ) : (
+                        <>
+                          <li>1. Natural hydration</li>
+                          <li>2. Chemical-free</li>
+                          <li>3. Eco-friendly choice</li>
+                          <li>4. Rich in nutrients</li>
+                        </>
+                      )}
                     </ul>
                   </div>
 
@@ -239,7 +254,7 @@ export default function Category() {
                       e.stopPropagation();
                       setActiveProduct(activeProduct === item.name ? null : item.name);
                     }}>
-                      Discover →
+                      {activeProduct === item.name ? "Close X" : "Discover →"}
                     </p>
                   </div>
                 </div>

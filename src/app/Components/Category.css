@@ -704,8 +704,7 @@ body {
   transition: transform 0.5s ease;
 }
 
-.category-card.active .overlay-text h3,
-.category-card.active .overlay-text p {
+.category-card.active .overlay-text h3 {
   transform: translateY(150px);
 }
 

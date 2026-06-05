@@ -515,8 +515,7 @@ body {
   background: rgba(255, 255, 255, 0.45);
 }
 
-.products-card.active .overlay-text h3,
-.products-card.active .overlay-text p {
+.products-card.active .overlay-text h3 {
   transform: translateY(150px);
 }
 
