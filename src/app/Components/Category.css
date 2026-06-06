@@ -151,7 +151,7 @@ body {
 .featured-section {
   width: 100%;
   background: #f5f2eb;
-  padding: 90px 80px;
+  padding: 90px 160px;
   scroll-margin-top: 130px;
 }
 
@@ -639,15 +639,6 @@ body {
     height: auto;
   }
 
-  .category-card .product-overlay h3 {
-    color: rgb(255, 255, 255);
-    margin-bottom: 10px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 18px;
-    font-weight: 400;
-    transition: transform 0.5s;
-}
-
 .product-overlay h3 {
     color: #fff;
     margin-bottom: 10px;
@@ -724,14 +715,14 @@ body {
   color: #fff;
   margin-bottom: 10px;
   font-family: "Cormorant Garamond", serif;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 400;
   transition: transform 0.5s ease;
 }
 
 .category-card .product-overlay p {
   color: white;
-  font-size: 14px;
+  font-size: 13px;
   transition: transform 0.5s ease;
 }
 
