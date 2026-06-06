@@ -561,6 +561,15 @@ body {
     letter-spacing: 0.5px;
   }
 
+   .category-card .product-overlay h3 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    font-weight: 400;
+    transition: transform 0.5s;
+}
+
   .arrow-btn {
     width: 34px;
     height: 34px;
@@ -629,6 +638,28 @@ body {
     cursor: pointer;
     height: auto;
   }
+
+  .category-card .product-overlay h3 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
+    font-weight: 400;
+    transition: transform 0.5s;
+}
+
+.product-overlay h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: Cormorant Garamond, serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
 
   .product-image-wrapper {
     height: clamp(200px, 60vw, 280px);
