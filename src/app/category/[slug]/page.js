@@ -1,3 +1,6 @@
+// Never pre-render at build time — always render on demand (avoids build-time API calls)
+export const dynamic = 'force-dynamic';
+
 import Header from "../../Components/Header";
 import Category from "../../Components/Category";
 import Footer from "../../Components/Footer";
