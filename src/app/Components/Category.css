@@ -22,7 +22,7 @@ body {
 
 .category-section {
   width: 100%;
-  padding: 90px 80px;
+  padding: 90px 160px;
   background: #f5f2eb;
 }
 
@@ -52,7 +52,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 50px;
 }
 
 .category-card {
@@ -181,7 +181,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 50px;
 }
 
 /* ================= PRODUCT CARD ================= */

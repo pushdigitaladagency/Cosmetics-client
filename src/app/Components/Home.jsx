@@ -242,7 +242,7 @@ export default function Home() {
         <div className="products-grid">
 
           {/* CARD 1 */}
-          <Link href="/category?catcode=cat001" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/category/lip-care" style={{ textDecoration: "none", color: "inherit" }}>
             <div   className={`products-card ${
     activeProduct === "Lip Care" ? "active" : ""
   }`}>
@@ -277,7 +277,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 2 */}
-          <Link href="/category?catcode=cat002" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/category/skin-care" style={{ textDecoration: "none", color: "inherit" }}>
             <div   className={`products-card ${
     activeProduct === "Skin Care" ? "active" : ""
   }`}>
@@ -312,7 +312,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 3 */}
-          <Link href="/category?catcode=cat003" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/category/hair-care" style={{ textDecoration: "none", color: "inherit" }}>
             <div   className={`products-card ${
     activeProduct === "Hair Care" ? "active" : ""
   }`}>
@@ -347,7 +347,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 4 */}
-          <Link href="/category?catcode=cat004" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/category/hygiene" style={{ textDecoration: "none", color: "inherit" }}>
             <div   className={`products-card ${
     activeProduct === "Hygiene" ? "active" : ""
   }`}>
@@ -588,9 +588,9 @@ export default function Home() {
             </h2>
           </div>
 
-          <a href="/category?catcode=cat001" className="pp-link">
+          <Link href="/category/lip-care" className="pp-link">
             View all products →
-          </a>
+          </Link>
 
         </div>
 
@@ -598,7 +598,7 @@ export default function Home() {
         <div className="pp-grid">
 
           {/* CARD 1 */}
-          <Link href="/products/lip005" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/natural-lipstick" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
@@ -624,7 +624,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 2 */}
-          <Link href="/products/hair004" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/herbal-hair-oil-infused-with-moringa-leaves-and-rosemary-oil" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
@@ -650,7 +650,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 3 */}
-          <Link href="/products/hair003" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/herbal-hair-mask-powder" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
@@ -676,7 +676,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 4 */}
-          <Link href="/products/lip002" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/strawberry-lip-balm" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
@@ -702,7 +702,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 5 */}
-          <Link href="/products/skin001" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/face-brightening-night-moisturizer-using-rosehip-seed-oil" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>

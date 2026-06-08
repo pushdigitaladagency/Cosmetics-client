@@ -13,7 +13,19 @@ import { useParams, useRouter } from "next/navigation";
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
 const MAILER_URL = process.env.NEXT_PUBLIC_MAILER_API;
 
-const ProductDetails = () => {
+// Maps catcode → category slug for back-navigation.
+// Update this if new categories are added in the backend.
+const CATCODE_TO_SLUG = {
+  cat001: "lip-care",
+  cat002: "skin-care",
+  cat003: "hair-care",
+  cat004: "hygiene",
+};
+
+const ProductDetails = ({
+  initialProduct          = null, // pre-fetched by page.js (server)
+  initialRelatedProducts  = [],   // pre-fetched by page.js via /api/categories/:slug/products
+}) => {
   const params = useParams();
   const router = useRouter();
 
@@ -54,14 +66,17 @@ const ProductDetails = () => {
     }
   };
 
-  const products_id = params?.products_id;
-  const [catid, setCatid] = useState(null);
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const slug = params?.slug;
+  const [catSlug, setCatSlug] = useState(null);
+  // Seed product state from server props — no loading flash when props provided
+  const [product, setProduct] = useState(initialProduct);
+  const [loading, setLoading] = useState(initialProduct === null);   // false if pre-fetched
   const [error, setError] = useState(null);
   const [selectedQuantity, setSelectedQuantity] = useState(null);
   const [displayedQuantity, setDisplayedQuantity] = useState(null);
   const [isImageFading, setIsImageFading] = useState(false);
+  // Related products from the same category (fetched server-side)
+  const [relatedProducts, setRelatedProducts] = useState(initialRelatedProducts);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -76,46 +91,51 @@ const ProductDetails = () => {
 
 
   useEffect(() => {
-    if (!products_id) return;
+    /* ── Helper: initialise variant / catSlug from a product object ──────── */
+    const applyProductData = (productData) => {
+      setCatSlug(
+        productData.category_slug ||
+        CATCODE_TO_SLUG[productData.catcode] ||
+        productData.catcode
+      );
+      if (productData.variants && productData.variants.length > 0) {
+        if (productData.variants.includes("Pink"))       setSelectedQuantity("Pink");
+        else if (productData.variants.includes("pink")) setSelectedQuantity("pink");
+        else                                             setSelectedQuantity(productData.variants[0]);
+      } else if (productData.hero_section?.sizes?.length > 0) {
+        const sizes = productData.hero_section.sizes;
+        if (sizes.includes("XL"))       setSelectedQuantity("XL");
+        else if (sizes.includes("xl")) setSelectedQuantity("xl");
+        else                           setSelectedQuantity(sizes[0]);
+      } else if (Array.isArray(productData.hero_section?.net_quantity) && productData.hero_section.net_quantity.length > 0) {
+        const nq = productData.hero_section.net_quantity;
+        setSelectedQuantity(nq.includes("100 ml") ? "100 ml" : nq[0]);
+      } else {
+        setSelectedQuantity(null);
+      }
+    };
+
+    /* ── PATH A: product was pre-fetched by page.js ────────────────────── */
+    if (initialProduct) {
+      applyProductData(initialProduct);
+      return; // skip client-side fetch entirely
+    }
+
+    /* ── PATH B: no server data – full client-side fetch ───────────────── */
+    if (!slug) return;
 
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await fetch(
-          `${BASE_URL}/api/products/${products_id}`
-        );
+        const res = await fetch(`${BASE_URL}/api/products/${slug}`);
         if (!res.ok) throw new Error(`Failed to fetch product (${res.status})`);
         const data = await res.json();
-        // API may return an array or a single object
-        const productData = Array.isArray(data) ? data[0] : data;
+        // Normalise — API may return array, single object, or { data: {} }
+        const productData = Array.isArray(data) ? data[0] : data?.data ?? data;
         setProduct(productData);
-        setCatid(productData.catcode);
-
-        // Determine initial active variant/size/quantity
-        if (productData.variants && productData.variants.length > 0) {
-          if (productData.variants.includes("Pink")) {
-            setSelectedQuantity("Pink");
-          } else if (productData.variants.includes("pink")) {
-            setSelectedQuantity("pink");
-          } else {
-            setSelectedQuantity(productData.variants[0]);
-          }
-        } else if (productData.hero_section?.sizes && productData.hero_section.sizes.length > 0) {
-          if (productData.hero_section.sizes.includes("XL")) {
-            setSelectedQuantity("XL");
-          } else if (productData.hero_section.sizes.includes("xl")) {
-            setSelectedQuantity("xl");
-          } else {
-            setSelectedQuantity(productData.hero_section.sizes[0]);
-          }
-        } else if (Array.isArray(productData.hero_section?.net_quantity) && productData.hero_section.net_quantity.length > 0) {
-          if (productData.hero_section.net_quantity.includes("100 ml")) {
-            setSelectedQuantity("100 ml");
-          } else {
-            setSelectedQuantity(productData.hero_section.net_quantity[0]);
-          }
-        } else {
-          setSelectedQuantity(null);
+        applyProductData(productData);
+        if (Array.isArray(productData?.related_products)) {
+          setRelatedProducts(productData.related_products);
         }
       } catch (err) {
         setError(err.message);
@@ -125,7 +145,8 @@ const ProductDetails = () => {
     };
 
     fetchProduct();
-  }, [products_id]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   /* Sync scroll reveal with product render */
   useEffect(() => {
@@ -225,6 +246,7 @@ const ProductDetails = () => {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
+          product: product.name,
         }),
       });
 
@@ -274,7 +296,7 @@ const ProductDetails = () => {
 
       {/* ================= BREADCRUMB ================= */}
       <div className="breadcrumb reveal-up">
-        <Link href={`/category?catcode=${catid}`} style={{ textDecoration: "none", color: "inherit" }}>
+        <Link href={`/category/${catSlug}`} style={{ textDecoration: "none", color: "inherit" }}>
           <ArrowLeft size={16} />
         </Link>
 
@@ -329,11 +351,12 @@ const ProductDetails = () => {
               <Star fill="#4F6D42" strokeWidth={0} />
               <Star fill="#4F6D42" strokeWidth={0} />
               <Star fill="#4F6D42" strokeWidth={0} />
-              <Star className="star5" fill="#F1EFE4" strokeWidth={0} />
+              
+              {hero.rating}
             </div>
 
             <span className="rating-text">
-              {hero.rating} · {hero.reviews}
+               {hero.reviews}
             </span>
 
           </div>
@@ -686,27 +709,29 @@ const ProductDetails = () => {
             </h2>
           </div>
 
-          <Link href="/category?catcode=cat001" className="view-all">
+          <Link href="/category/lip-care" className="view-all">
             View all <span>→</span>
           </Link>
         </div>
 
         <div className="related-grid">
-          {product.related_products?.map((rp, i) => (
-            <Link
-              href={`/products/${rp.product_id}`}
-              key={rp.product_id || i}
-              style={{ textDecoration: "none" }}
-            >
-              <div className="related-card">
-                <div className="related-image">
-                  <img src={`/images/${rp.image}`} alt={rp.name} />
-                </div>
-
-                <h4>{rp.name}</h4>
-              </div>
-            </Link>
-          ))}
+          {relatedProducts.length > 0
+            ? relatedProducts.map((rp, i) => (
+                <Link
+                  href={`/products/${rp.slug }`}
+                  key={rp.slug || rp.product_id || i}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="related-card">
+                    <div className="related-image">
+                      <img src={`/images/${rp.image}`} alt={rp.name} />
+                    </div>
+                    <h4>{rp.name}</h4>
+                  </div>
+                </Link>
+              ))
+            : null
+          }
         </div>
       </section>
     </div>

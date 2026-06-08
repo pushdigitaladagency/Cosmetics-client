@@ -1,15 +1,29 @@
-import React, { Suspense } from "react";
 import Header from "../Components/Header";
 import Category from "../Components/Category";
 import Footer from "../Components/Footer";
+import { getCategories, getCategoryProducts, toSlug } from "../lib/data";
 
-export default function CategoryPage() {
+/* ---------- Page (async Server Component) ---------- */
+
+export default async function CategoryPage() {
+  const categories = await getCategories();
+
+  // Determine the first category's slug to pre-load its products
+  const firstCat = categories[0] ?? null;
+  const firstSlug = firstCat
+    ? (firstCat.slug || toSlug(firstCat.name))
+    : null;
+
+  const initialProducts = await getCategoryProducts(firstSlug);
+
   return (
     <>
       <Header />
-      <Suspense fallback={<div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "40vh", background: "#f5f2eb" }}><p>Loading…</p></div>}>
-        <Category />
-      </Suspense>
+      <Category
+        initialCategories={categories}
+        initialProducts={initialProducts}
+        initialSlug={firstSlug}
+      />
       <Footer />
     </>
   );
