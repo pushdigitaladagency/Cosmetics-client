@@ -1,6 +1,7 @@
  "use client"
  import React from 'react';
  import { useRouter } from 'next/navigation';
+import { asset } from '@/lib/asset';
 // import { LocationIcon, PhoneIcon, MailIcon, FacebookIcon, InstagramIcon, YoutubeIcon } from '../assets/icons';
 import './Footer.css';
  const FacebookIcon = () => (
@@ -76,7 +77,7 @@ return (
             <div className="oh-foot__logo">
               <div className="oh-header__logoMark oh-header__logoMark--dark">
                 {/* <span>O</span><i>H</i> */}
-                <img src="/images/Organic_logo.svg" alt="Organic Heritage" className="logo2 " />
+                <img src={asset("/images/Organic_logo.svg")} alt="Organic Heritage" className="logo2 " />
               </div>
             </div>
 

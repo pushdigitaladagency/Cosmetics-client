@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { asset } from "@/lib/asset";
 import "./Preloader.css";
 
 export default function Preloader() {
@@ -58,7 +59,7 @@ export default function Preloader() {
         {/* Logo */}
         <div className="preloader__logo-wrap">
           <img
-            src="/images/Organic_logo.svg"
+            src={asset("/images/Organic_logo.svg")}
             alt="Organic Heritage Cosmetics"
             className="preloader__logo"
           />

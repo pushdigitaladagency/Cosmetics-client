@@ -5,6 +5,7 @@ import "./Home.css";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { asset } from "@/lib/asset";
 
 export default function Home() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -91,7 +92,7 @@ export default function Home() {
     <div className="hero">
 
       {/* BACKGROUND IMAGE */}
-      <img src="/images/hero.jpeg" alt="background" className="hero-bg" />
+      <img src={asset("/images/hero.jpeg")} alt="background" className="hero-bg" />
 
 
 
@@ -104,7 +105,7 @@ export default function Home() {
         <div className="hero-left">
 
           <p className="tagline reveal-up">
-            <img src="./images/leaf33.png" className="leaf" ></img>
+            <img src={asset("/images/leaf33.png")} className="leaf" ></img>
             BOTANICAL · PURE · CRAFTED
           </p>
 
@@ -174,13 +175,13 @@ export default function Home() {
         <div className="about-images reveal-left">
 
           <img
-            src="/images/about-main.png"
+            src={asset("/images/about-main.png")}
             alt="about"
             className="about-main-img"
           />
 
           <img
-            src="/images/about-small.png"
+            src={asset("/images/about-small.png")}
             alt="products"
             className="about-small-img"
           />
@@ -248,7 +249,7 @@ export default function Home() {
   }`}>
 
               <img className="prd1"
-                src="/images/cat001.svg"
+                src={asset("/images/cat001.svg")}
                 alt="Lip Care"
               />
 
@@ -283,7 +284,7 @@ export default function Home() {
   }`}>
 
               <img className="prd2"
-                src="/images/cat002.svg"
+                src={asset("/images/cat002.svg")}
                 alt="Skin Care"
               />
 
@@ -318,7 +319,7 @@ export default function Home() {
   }`}>
 
               <img className="prd2"
-                src="/images/cat003.svg"
+                src={asset("/images/cat003.svg")}
                 alt="Hair Care"
               />
 
@@ -353,7 +354,7 @@ export default function Home() {
   }`}>
 
               <img className="prd2"
-                src="/images/cat004.svg"
+                src={asset("/images/cat004.svg")}
                 alt="Hygiene"
               />
 
@@ -410,7 +411,7 @@ export default function Home() {
           {/* CARD 1 */}
           <div className="philosophy-card reveal-up reveal-delay-1">
             <div className="icon-circle" >
-              <img src="/images/L.png" alt="icon" id="Li" />
+              <img src={asset("/images/L.png")} alt="icon" id="Li" />
             </div>
 
             <h3>Herbal Extracts</h3>
@@ -423,7 +424,7 @@ export default function Home() {
           {/* CARD 2 */}
           <div className="philosophy-card reveal-up reveal-delay-2">
             <div className="icon-circle">
-              <img src="/images/P.png" alt="icon" />
+              <img src={asset("/images/P.png")} alt="icon" />
             </div>
 
 
@@ -437,7 +438,7 @@ export default function Home() {
           {/* CARD 3 */}
           <div className="philosophy-card reveal-up reveal-delay-3">
             <div className="icon-circle">
-              <img src="/images/B.png" alt="icon" />
+              <img src={asset("/images/B.png")} alt="icon" />
             </div>
 
             <h3>No Harsh Chemicals</h3>
@@ -450,7 +451,7 @@ export default function Home() {
           {/* CARD 4 */}
           <div className="philosophy-card reveal-up reveal-delay-4">
             <div className="icon-circle">
-              <img src="/images/w.png" alt="icon" />
+              <img src={asset("/images/w.png")} alt="icon" />
             </div>
 
             <h3>Gentle Formulations</h3>
@@ -463,7 +464,7 @@ export default function Home() {
           {/* CARD 5 */}
           <div className="philosophy-card reveal-up reveal-delay-5">
             <div className="icon-circle">
-              <img src="/images/N.png" alt="icon" />
+              <img src={asset("/images/N.png")} alt="icon" />
             </div>
 
             <h3>Natural Fragrance</h3>
@@ -476,7 +477,7 @@ export default function Home() {
           {/* CARD 6 */}
           <div className="philosophy-card reveal-up reveal-delay-6">
             <div className="icon-circle">
-              <img src="/images/S.png" alt="icon" />
+              <img src={asset("/images/S.png")} alt="icon" />
             </div>
 
             <h3>Tested with Care</h3>
@@ -504,7 +505,7 @@ export default function Home() {
           <div className="choose-item">
 
             <div className="choose-icon">
-              <img src="/images/icon1.png" alt="icon" />
+              <img src={asset("/images/icon1.png")} alt="icon" />
 
               <span>01</span>
             </div>
@@ -521,7 +522,7 @@ export default function Home() {
           <div className="choose-item">
 
             <div className="choose-icon">
-              <img src="/images/icon2.png" alt="icon" />
+              <img src={asset("/images/icon2.png")} alt="icon" />
 
               <span>02</span>
             </div>
@@ -538,7 +539,7 @@ export default function Home() {
           <div className="choose-item">
 
             <div className="choose-icon">
-              <img src="/images/icon3.png" alt="icon" />
+              <img src={asset("/images/icon3.png")} alt="icon" />
 
               <span>03</span>
             </div>
@@ -556,7 +557,7 @@ export default function Home() {
           <div className="choose-item">
 
             <div className="choose-icon">
-              <img src="/images/icon4.png" alt="icon" />
+              <img src={asset("/images/icon4.png")} alt="icon" />
 
               <span>04</span>
             </div>
@@ -603,7 +604,7 @@ export default function Home() {
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src="/images/herbal-lipstick.svg"
+                src={asset("/images/herbal-lipstick.svg")}
                 alt="lipstick"
               />
             </div>
@@ -629,7 +630,7 @@ export default function Home() {
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src="/images/Natural-hair-oil.svg"
+                src={asset("/images/Natural-hair-oil.svg")}
                 alt="hair oil"
               />
             </div>
@@ -655,7 +656,7 @@ export default function Home() {
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src="/images/Herbal-face-pack.svg"
+                src={asset("/images/Herbal-face-pack.svg")}
                 alt="face pack"
               />
             </div>
@@ -681,7 +682,7 @@ export default function Home() {
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src="/images/Strawberry-lip-balm.svg"
+                src={asset("/images/Strawberry-lip-balm.svg")}
                 alt="body lotion"
               />
             </div>
@@ -707,7 +708,7 @@ export default function Home() {
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src="/images/face-cream.svg"
+                src={asset("/images/face-cream.svg")}
                 alt="bath powder"
               />
             </div>
@@ -736,7 +737,7 @@ export default function Home() {
         <div className="sc-img reveal-left">
 
           <img
-            src="/images/self-care-model.png"
+            src={asset("/images/self-care-model.png")}
             alt="self care"
           />
 
@@ -849,7 +850,7 @@ export default function Home() {
         <div className="bn-left reveal-left">
 
           <img
-            src="/images/leaf-icon.png"
+            src={asset("/images/leaf-icon.png")}
             alt="leaf"
             className="bn-icon"
           />
@@ -889,7 +890,7 @@ export default function Home() {
         <div className="bn-right reveal-right">
 
           <img
-            src="/images/daily-care.png"
+            src={asset("/images/daily-care.png")}
             alt="daily care"
           />
 

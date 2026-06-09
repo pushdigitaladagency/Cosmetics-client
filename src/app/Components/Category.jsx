@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { asset } from "@/lib/asset";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
 
@@ -289,7 +290,7 @@ export default function Category({
                 >
                   <img
                     className="category-card-bg"
-                    src={`/images/${item.catcode || itemSlug}.svg`}
+                    src={asset(`/images/${item.catcode || itemSlug}.svg`)}
                     alt={item.name}
                   />
 
@@ -379,9 +380,9 @@ export default function Category({
                     >
                       <img
                         src={
-                          item.image?.startsWith("http") || item.image?.startsWith("/images/")
+                          item.image?.startsWith("http")
                             ? item.image
-                            : `/images/${item.image}`
+                            : asset(item.image?.startsWith("/images/") ? item.image : `/images/${item.image}`)
                         }
                         alt={item.name}
                       />

@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { asset } from "@/lib/asset";
 import './Header.css';
 export default function Navbar(){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,7 +82,7 @@ export default function Navbar(){
     return (
 <nav className={`navbar ${isMenuOpen ? "active" : ""} ${scrolled ? "scrolled" : ""}`}>
         <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); scrollTo("home"); }}>
-          <img src="/images/Organic_logo.svg" alt="logo"  />
+          <img src={asset("/images/Organic_logo.svg")} alt="logo"  />
         </a>
 
         <button 

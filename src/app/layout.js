@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Preloader from "./Components/Preloader";
 import ScrollRevealInit from "./Components/ScrollRevealInit";
+import { asset } from "@/lib/asset";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,7 @@ export const metadata = {
   title: "Organic Cosmetics",
   description: "Natural and Organic Cosmetic Products",
   icons: {
-    icon: "/images/Organic_logo.svg",
+    icon: asset("/images/Organic_logo.svg"),
   },
 };
 

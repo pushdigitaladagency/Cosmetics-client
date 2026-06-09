@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { asset } from "@/lib/asset";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
 const MAILER_URL = process.env.NEXT_PUBLIC_MAILER_API;
@@ -320,7 +321,7 @@ const ProductDetails = ({
           onTouchCancel={handleProductImageTouchEnd}
         >
           <img
-            src={`/images/${selectedQuantity ? product.image.replace('.svg', `-${selectedQuantity.replace(/\s/g, '')}.svg`) : product.image}`}
+            src={asset(`/images/${selectedQuantity ? product.image.replace('.svg', `-${selectedQuantity.replace(/\s/g, '')}.svg`) : product.image}`)}
             alt={product.name}
             className={`product-image${isImageFading ? ' product-image--fading' : ''}`}
           />
@@ -330,7 +331,7 @@ const ProductDetails = ({
         <div className="product_content reveal-right">
 
           <div className="collection-badge">
-            <img src="/images/Icon2.svg" alt="" />{hero.collection?.toUpperCase()}
+            <img src={asset("/images/Icon2.svg")} alt="" />{hero.collection?.toUpperCase()}
           </div>
 
           <h1 className="product-title">
@@ -549,7 +550,7 @@ const ProductDetails = ({
 
             {story.benefits_list?.map((benefit, i) => (
               <span key={i}>
-                <img src="/images/Icon3.svg" alt="" /> {benefit} <br />
+                <img src={asset("/images/Icon3.svg")} alt="" /> {benefit} <br />
               </span>
             ))}
 
@@ -684,7 +685,7 @@ const ProductDetails = ({
               disabled={isSubmitting}
             >
               <span>
-                <img src="/images/Icon1.svg" alt="" />
+                <img src={asset("/images/Icon1.svg")} alt="" />
               </span>
 
               {isSubmitting ? "Sending..." : "Submit Enquiry"}
@@ -724,7 +725,7 @@ const ProductDetails = ({
                 >
                   <div className="related-card">
                     <div className="related-image">
-                      <img src={`/images/${rp.image}`} alt={rp.name} />
+                      <img src={asset(`/images/${rp.image}`)} alt={rp.name} />
                     </div>
                     <h4>{rp.name}</h4>
                   </div>
