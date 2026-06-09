@@ -635,7 +635,7 @@
     .contact-image {
         width: clamp(304px, 100%, 400px);
         margin-top: -273px;
-        margin-left: -419px;
+        margin-left: -431px;
         position: static;
     }
 .contact-sent{

@@ -378,7 +378,11 @@ export default function Category({
                       onTouchCancel={handleProductImageTouchEnd}
                     >
                       <img
-                        src={`/images/${item.image}`}
+                        src={
+                          item.image?.startsWith("http") || item.image?.startsWith("/images/")
+                            ? item.image
+                            : `/images/${item.image}`
+                        }
                         alt={item.name}
                       />
                     </div>

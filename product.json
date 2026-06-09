@@ -1,0 +1,76 @@
+{
+  "product_id": "skin003",
+  "catcode": "cat002",
+  "name": "karisalankani kajal",
+  "image": "karisalankani-kajal.svg",
+  "hero_section": {
+    "collection": "Heritage Collection",
+    "title": "karisalankani kajal",
+    "short_description": "Our karisalankani(Bhringaraj) kajal brings you the absolute purest form of traditional eye care. Made using the sacred, hand gathered soot of fresh karisankani leaves and unrefined castor oil and pure ghee. Everyswipe acts as a protective, cooling shield against heat.",
+    "rating": "4.8",
+    "reviews": "214 reviews",
+    "net_quantity": "8 gms",
+    "hero_ingredients": [
+      "Karisankanni(Bringhraj)",
+      "Castor oil",
+      "Almond oil",
+      "Ghee"
+    ],
+    "suitability": "For any age group"
+  },
+  "story_section": {
+    "heading": "Pure ritual, honest formulation.",
+    "description": "Our karisalankani(Bhringaraj) kajal brings you the absolute purest form of traditional eye care. Made using the sacred, hand gathered soot offresh karisankani leaves and unrefined castor oil and pure ghee. Every swipe acts as a protective, cooling shield against heat. ",
+    "claim": "Dermatologically Tested Claim",
+    "main_benefits": [
+      "Provides natural pigment, Heals cracked lips,",
+      "Provides a smooth base and acts as a sun protection."
+    ],
+    "benefits_list": [
+      "100% plantbsourced, cooling and revitalizing,",
+      "Safe for sensitive waterlines,",
+      "Completely free from parabens,",
+      "Chemical preservatives and artificial fragrance."
+    ],
+    "suitability": [
+      " For any age group"
+    ],
+    "safety_warnings": [
+      "Do a patch test before applying."
+    ],
+    "storage_instructions": [
+      "Store in dry place"
+    ],
+    "how_to_use": [
+      "Clean your eye are and take the required amount of kajal using the applicator and apply either in lower lid or upper lid of eyes. You can lightly dust a tiny amout of natural starch powder like arrowroot powder or tapioca powder to prevent smudging"
+    ]
+  },
+  "related_products": [
+    {
+      "product_id": "skin001",
+      "name": "Face Brightening Night Moisturizer using Rosehip seed oil",
+      "image": "rosehip-night-moisturizer.svg",
+      "slug": "face-brightening-night-moisturizer-using-rosehip-seed-oil"
+    },
+    {
+      "product_id": "hair005",
+      "name": "Hibiscus Shampoo",
+      "image": "hibiscus-shampoo.svg",
+      "slug": "hibiscus-shampoo"
+    },
+    {
+      "product_id": "hair003",
+      "name": "Herbal Hair Mask Powder",
+      "image": "herbal-hair-mask.svg",
+      "slug": "herbal-hair-mask-powder"
+    },
+    {
+      "product_id": "lip001",
+      "name": "Ghee Infused Lip Butter",
+      "image": "ghee-lip-butter.svg",
+      "slug": "ghee-infused-lip-butter"
+    }
+  ],
+  "slug": "karisalankani-kajal",
+  "category_slug": "skin-care"
+}

@@ -35,17 +35,20 @@
 
 .logo2 {
     object-fit: contain;
-    width: 92px;
+    width: 119px;
     height: 119px;
     margin-top: -5px;
 }
 
 .oh-foot__tag {
-  font-size: 14px;
-  line-height: 1.6;
-  color: white;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+    color: #fff;
+    margin: 0px;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+    margin-left: -77px;
+    width: 338px;
 }
 
 .oh-foot__form {
@@ -92,15 +95,13 @@
 
 .oh-foot__heading,
 .oh-foot__heading1 {
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 0.16em;
   color: white;
   margin: 0;
 }
 
-.oh-foot__heading1 {
-  margin-left: 69px;
-}
+
 
 .oh-foot__list {
   list-style: none;
@@ -129,14 +130,14 @@
   gap: 12px;
   color: #ffffff9c;
   line-height: 1.5;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Inter', sans-serif;
 }
 
 .oh-foot__social {
     flex-direction: row;
     gap: 14px;
-    margin-left: 59px;
+    margin-left: 0px;
     display: flex;
 }
 
@@ -173,7 +174,7 @@
   padding-top: 25px;
   padding-bottom: 48px;
   font-family: Inter, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   display: flex;
 }
 
@@ -212,7 +213,7 @@
 
   .oh-foot__bottom {
     width: 100%;
-    padding: 25px clamp(20px, 5vw, 50px) 48px;
+    padding: 25px clamp(20px, 5vw, 18px) 48px;
     flex-direction: row;
     gap: clamp(10px, 2vw, 20px);
     text-align: center;
@@ -227,7 +228,8 @@
   }
 
   .oh-foot__tag {
-    font-size: clamp(11px, 1.1vw, 13px);
+   font-size: clamp(11px, 1.1vw, 16px);
+        margin-left: 1px;
   }
 
   .logo2 {
@@ -250,7 +252,7 @@
 
   .oh-foot__social {
     gap: clamp(15px, 2vw, 25px);
-    margin-left: 45px;
+    margin-left: 30px;
   }
 
   #follow {
