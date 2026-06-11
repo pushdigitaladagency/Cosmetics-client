@@ -104,6 +104,40 @@ body{
   touch-action: none;
 }
 
+/* ── Skeleton shimmer while product image loads ── */
+@keyframes img-shimmer {
+  0%   { background-position: -700px 0; }
+  100% { background-position:  700px 0; }
+}
+
+.product-img-skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background: linear-gradient(
+    90deg,
+    #ece7db 25%,
+    #d9d3c7 50%,
+    #ece7db 75%
+  );
+  background-size: 700px 100%;
+  animation: img-shimmer 1.4s infinite linear;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-img-skeleton.hidden {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+/* Fade-in the real image once loaded */
+.product-image.loaded {
+  opacity: 1 !important;
+}
+
+
 .hover-tag{
   position: absolute;
   left: 20px;

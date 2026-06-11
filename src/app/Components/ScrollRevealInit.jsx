@@ -7,12 +7,17 @@ import { usePathname } from "next/navigation";
  * Runs the IntersectionObserver-based scroll reveal on every route change.
  * Elements with classes: reveal, reveal-up, reveal-left, reveal-right, reveal-img
  * will animate in when they enter the viewport.
+ *
+ * Fixes applied:
+ *  1. Delay increased to 250ms so React hydration fully settles after hard refresh.
+ *  2. Elements already in the viewport (e.g. hero content) get is-visible immediately
+ *     via getBoundingClientRect instead of waiting for the async IO callback.
+ *  3. Looser threshold (0.08) + smaller rootMargin so elements near the fold still trigger.
  */
 export default function ScrollRevealInit() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Small delay so the new page's DOM is painted
     const timer = setTimeout(() => {
       const els = document.querySelectorAll(
         ".reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-img"
@@ -28,17 +33,25 @@ export default function ScrollRevealInit() {
             }
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+        { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
       );
 
       els.forEach((el) => {
-        // Reset visibility for page transitions
+        // Reset for clean page transitions
         el.classList.remove("is-visible");
-        observer.observe(el);
+
+        // Immediately reveal elements already visible on screen (hero content on refresh)
+        const rect = el.getBoundingClientRect();
+        const alreadyInView = rect.top < window.innerHeight - 20 && rect.bottom > 0;
+        if (alreadyInView) {
+          el.classList.add("is-visible");
+        } else {
+          observer.observe(el);
+        }
       });
 
       return () => observer.disconnect();
-    }, 120);
+    }, 250);
 
     return () => clearTimeout(timer);
   }, [pathname]);

@@ -48,3 +48,41 @@ a {
     color-scheme: dark;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL IMAGE SHIMMER SKELETON
+   Wrapper → add class  "shimmer-wrap"
+   <img>   → add class  "shimmer-img"
+             + onLoad={e => e.currentTarget.classList.add('img-loaded')}
+   ───────────────────────────────────────────────────────────── */
+@keyframes global-shimmer {
+  0%   { background-position: -800px 0; }
+  100% { background-position:  800px 0; }
+}
+
+.shimmer-wrap {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #e8e3d8 25%,
+    #d4cfc5 50%,
+    #e8e3d8 75%
+  );
+  background-size: 800px 100%;
+  animation: global-shimmer 1.5s infinite linear;
+}
+
+.shimmer-wrap:has(.img-loaded) {
+  animation: none;
+  background: transparent;
+}
+
+.shimmer-img {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.shimmer-img.img-loaded {
+  opacity: 1;
+}

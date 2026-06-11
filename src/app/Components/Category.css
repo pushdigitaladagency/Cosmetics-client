@@ -68,6 +68,15 @@ body {
   cursor: pointer;
    border: 2px solid transparent;
   transition: all 0.3s ease;
+  /* shimmer plays here until .category-card-bg fires onLoad — max 3 cycles (4.5s) */
+  background: linear-gradient(90deg, #e2ddd2 25%, #ccc8bc 50%, #e2ddd2 75%);
+  background-size: 800px 100%;
+  animation: global-shimmer 1.5s 3 linear;
+}
+
+.category-card:has(.img-loaded) {
+  animation: none;
+  background: transparent;
 }
 
 .category-card.active::after {
@@ -214,6 +223,15 @@ body {
   width: 100%;
   height: 500px;
   overflow: hidden;
+  /* shimmer until the product image loads — max 3 cycles (4.5s) */
+  background: linear-gradient(90deg, #ebe7db 25%, #d6d2c6 50%, #ebe7db 75%);
+  background-size: 800px 100%;
+  animation: global-shimmer 1.5s 3 linear;
+}
+
+.product-image-wrapper:has(.img-loaded) {
+  animation: none;
+  background: transparent;
 }
 
 .product-image-wrapper img {

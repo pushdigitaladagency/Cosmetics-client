@@ -324,7 +324,6 @@ body {
     padding: 75px 112px;
     display: flex;
     left: -39px;
-
 }
 
 /* LEFT SIDE */
@@ -443,6 +442,7 @@ body {
   border: 2px solid transparent;
   transition: all 0.3s ease;
 }
+
 
 .products-card:hover {
   transform: translateY(-10px);
@@ -872,6 +872,7 @@ body {
   height: 423px;
   overflow: hidden;
 }
+
 
 .pp-img img {
   width: 100%;
@@ -3079,11 +3080,11 @@ body {
     height: 43px;
   }
 
-  #Li {
+  /* #Li {
     width: 98%;
     height: 50%;
     object-fit: contain;
-  }
+  } */
 
 
   .choose-grid {

@@ -289,9 +289,12 @@ export default function Category({
                   onMouseLeave={() => setActiveProduct(null)}
                 >
                   <img
-                    className="category-card-bg"
+                    className="category-card-bg shimmer-img"
                     src={asset(`/images/${item.catcode || itemSlug}.svg`)}
                     alt={item.name}
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={e => e.currentTarget.classList.add('img-loaded')}
                   />
 
                   <div className="product-overlay">
@@ -385,6 +388,10 @@ export default function Category({
                             : asset(item.image?.startsWith("/images/") ? item.image : `/images/${item.image}`)
                         }
                         alt={item.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="shimmer-img"
+                        onLoad={e => e.currentTarget.classList.add('img-loaded')}
                       />
                     </div>
 

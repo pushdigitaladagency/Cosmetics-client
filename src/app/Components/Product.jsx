@@ -76,6 +76,7 @@ const ProductDetails = ({
   const [selectedQuantity, setSelectedQuantity] = useState(null);
   const [displayedQuantity, setDisplayedQuantity] = useState(null);
   const [isImageFading, setIsImageFading] = useState(false);
+  const [imgLoaded, setImgLoaded]         = useState(false);  // skeleton tracker
   // Related products from the same category (fetched server-side)
   const [relatedProducts, setRelatedProducts] = useState(initialRelatedProducts);
 
@@ -289,6 +290,8 @@ const ProductDetails = ({
   const hero = product.hero_section ?? {};
   const story = product.story_section ?? {};
 
+ 
+
   return (
     <div className="product-page">
 
@@ -303,7 +306,7 @@ const ProductDetails = ({
 
         <span>Products</span>
         <span>·</span>
-        <span>Lipcare</span>
+        <span>{product.category_slug}</span>
         <span>·</span>
         <span>{product.name}</span>
       </div>
@@ -320,9 +323,16 @@ const ProductDetails = ({
           onTouchEnd={handleProductImageTouchEnd}
           onTouchCancel={handleProductImageTouchEnd}
         >
+          {/* Shimmer skeleton — visible until image fires onLoad */}
+          <div className={`product-img-skeleton${imgLoaded ? ' hidden' : ''}`} />
+
           <img
             src={asset(`/images/${selectedQuantity ? product.image.replace('.svg', `-${selectedQuantity.replace(/\s/g, '')}.svg`) : product.image}`)}
             alt={product.name}
+            fetchPriority="high"
+            decoding="async"
+            onLoad={() => setImgLoaded(true)}
+            style={{ opacity: imgLoaded ? 1 : 0 }}
             className={`product-image${isImageFading ? ' product-image--fading' : ''}`}
           />
         </div>
@@ -331,7 +341,7 @@ const ProductDetails = ({
         <div className="product_content reveal-right">
 
           <div className="collection-badge">
-            <img src={asset("/images/Icon2.svg")} alt="" />{hero.collection?.toUpperCase()}
+            <img src={asset("/images/Icon2.svg")} alt="" loading="lazy" decoding="async" />{hero.collection?.toUpperCase()}
           </div>
 
           <h1 className="product-title">
@@ -389,6 +399,7 @@ const ProductDetails = ({
           }}
           onClick={() => {
             if (variant === selectedQuantity) return;
+            setImgLoaded(false);
             setIsImageFading(true);
             setTimeout(() => {
               setSelectedQuantity(variant);
@@ -435,6 +446,7 @@ const ProductDetails = ({
                         className={`size-btn${selectedQuantity === size ? ' active' : ''}`}
                         onClick={() => {
                           if (size === selectedQuantity) return;
+                          setImgLoaded(false);
                           setIsImageFading(true);
                           setTimeout(() => {
                             setSelectedQuantity(size);
@@ -459,6 +471,7 @@ const ProductDetails = ({
                           className={`quantity-btn${selectedQuantity === item ? ' active' : ''}`}
                           onClick={() => {
                             if (item === selectedQuantity) return;
+                            setImgLoaded(false);
                             setIsImageFading(true);
                             setTimeout(() => {
                               setSelectedQuantity(item);
@@ -550,7 +563,7 @@ const ProductDetails = ({
 
             {story.benefits_list?.map((benefit, i) => (
               <span key={i}>
-                <img src={asset("/images/Icon3.svg")} alt="" /> {benefit} <br />
+                <img src={asset("/images/Icon3.svg")} alt="" loading="lazy" decoding="async" /> {benefit} <br />
               </span>
             ))}
 
@@ -685,7 +698,7 @@ const ProductDetails = ({
               disabled={isSubmitting}
             >
               <span>
-                <img src={asset("/images/Icon1.svg")} alt="" />
+                <img src={asset("/images/Icon1.svg")} alt="" loading="lazy" decoding="async" />
               </span>
 
               {isSubmitting ? "Sending..." : "Submit Enquiry"}
@@ -710,7 +723,7 @@ const ProductDetails = ({
             </h2>
           </div>
 
-          <Link href="/category/lip-care" className="view-all">
+          <Link href={`/category/${product.category_slug}`} className="view-all">
             View all <span>→</span>
           </Link>
         </div>
@@ -725,7 +738,7 @@ const ProductDetails = ({
                 >
                   <div className="related-card">
                     <div className="related-image">
-                      <img src={asset(`/images/${rp.image}`)} alt={rp.name} />
+                      <img src={asset(`/images/${rp.image}`)} alt={rp.name} loading="lazy" decoding="async" />
                     </div>
                     <h4>{rp.name}</h4>
                   </div>
