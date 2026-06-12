@@ -51,101 +51,7 @@ body {
   z-index: -1;
 }
 
-/* NAVBAR */
 
-/* .navbar {
-    display: flex;
-
-    align-items: center;
-   gap: 552px;
-    margin-left: 159px;
-    position: fixed;
-    top: 0;
-} */
-
-/* .nav-left,
-.nav-right {
-  align-items: center;
-  gap: 140px;
-  margin-top: 44px;
-  display: flex;
-} */
-
-/* .navbar {
-  z-index: 100;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 500;
-  display: flex;
-  position: fixed;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  width: 100%;
-  gap: 35px;
-  transition: all 0.4s ease;
-} */
-
-/* .navbar.scrolled {
-  background-color: rgba(240, 244, 236, 0.98);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-} */
-
-/* Specific styles for scrolled state in Desktop/Laptop view */
-/* @media screen and (min-width: 1024px) {
-  .navbar.scrolled {
-    margin-top: 0 !important;
-    height: 114px;
-    padding: 19px 0;
-  }
-} */
-
-/* .menu-toggle {
-  display: none;
-}
-
-.nav-links {
-  display: contents;
-}
-
-.logo {
-  width: 121px;
-  order: 4;
-}
-
-.nav-links a:nth-child(1) {
-  order: 1;
-}
-
-.nav-links a:nth-child(2) {
-  order: 2;
-}
-
-.nav-links a:nth-child(3) {
-  order: 3;
-}
-
-.nav-links a:nth-child(4) {
-  order: 5;
-}
-
-.nav-links a:nth-child(5) {
-  order: 6;
-}
-
-.nav-links .order-btn {
-  order: 7;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #222;
-  transition: 0.3s;
-}
-
-.navbar a:hover {
-  color: #5f7f4c;
-} */
 
 /* SCROLL SPY — active nav link */
 .navbar a.nav-active {
@@ -2688,7 +2594,7 @@ body {
   .navbar {
     width: 100%;
     margin-left: 0;
-    padding: 15px 20px;
+    padding: 0px 20px;
     justify-content: space-between;
     position: fixed;
     top: 0;

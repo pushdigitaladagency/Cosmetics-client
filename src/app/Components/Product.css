@@ -989,6 +989,7 @@ body{
 
   .product-title {
     font-size: clamp(52px, 3vw, 70px);
+    width: 40vw;
   }
 
   .product-description {

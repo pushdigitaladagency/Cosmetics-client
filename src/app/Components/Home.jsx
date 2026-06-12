@@ -746,6 +746,35 @@ export default function Home() {
           </div>
           </Link>
 
+           {/* CARD 6 */}
+          <Link href="/products/herbal-hair-dye-1" style={{ textDecoration: "none", color: "inherit" }}>
+          <div className="pp-card">
+
+            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
+              <img
+                src={asset("/images/herbal-hair-dye-1.svg")}
+                alt="hair dye"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="pp-content">
+
+              <h3>
+                Herbal Hair Dye 1
+              </h3>
+
+              <p>
+               NATURAL COLOURING POWDER
+              </p>
+
+            </div>
+
+          </div>
+          </Link>
+
+
         </div>
 
       </section>

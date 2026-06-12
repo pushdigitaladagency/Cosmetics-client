@@ -9,6 +9,8 @@ export default function Preloader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Mark body so ScrollRevealInit knows the preloader is running
+    document.body.setAttribute("data-preloader-active", "1");
     // Lock scroll while preloader is active
     document.body.style.overflow = "hidden";
 
@@ -30,6 +32,8 @@ export default function Preloader() {
           setTimeout(() => {
             setPhase("done");
             document.body.style.overflow = "";
+            // Remove preloader-active flag so ScrollRevealInit works on next nav
+            document.body.removeAttribute("data-preloader-active");
             // Trigger scroll reveal for elements already in view
             triggerReveal();
           }, 900);
@@ -91,6 +95,39 @@ function triggerReveal() {
 
   if (!els.length) return;
 
+  // Separate elements that are already in the viewport from those below the fold.
+  // Already-visible elements need a short delay so the browser paints the
+  // initial hidden state (opacity:0 / transform) BEFORE we add is-visible,
+  // which lets the CSS transition actually play.
+  const alreadyVisible = [];
+  const belowFold = [];
+
+  els.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      alreadyVisible.push(el);
+    } else {
+      belowFold.push(el);
+    }
+  });
+
+  // Animate hero / above-fold elements with a tiny stagger after one rAF
+  // so the CSS transition duration (0.75 s) has a chance to run.
+  requestAnimationFrame(() => {
+    alreadyVisible.forEach((el, i) => {
+      // Read the existing transition-delay set by .reveal-delay-* classes
+      const existingDelay =
+        parseFloat(getComputedStyle(el).transitionDelay) * 1000 || 0;
+      const baseDelay = 60; // ms — just enough for the browser to paint opacity:0
+      setTimeout(() => {
+        el.classList.add("is-visible");
+      }, baseDelay + existingDelay);
+    });
+  });
+
+  // Off-screen elements use IntersectionObserver as usual
+  if (!belowFold.length) return;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -103,5 +140,5 @@ function triggerReveal() {
     { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
   );
 
-  els.forEach((el) => observer.observe(el));
+  belowFold.forEach((el) => observer.observe(el));
 }

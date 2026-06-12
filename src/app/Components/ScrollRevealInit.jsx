@@ -8,16 +8,19 @@ import { usePathname } from "next/navigation";
  * Elements with classes: reveal, reveal-up, reveal-left, reveal-right, reveal-img
  * will animate in when they enter the viewport.
  *
- * Fixes applied:
- *  1. Delay increased to 250ms so React hydration fully settles after hard refresh.
- *  2. Elements already in the viewport (e.g. hero content) get is-visible immediately
- *     via getBoundingClientRect instead of waiting for the async IO callback.
- *  3. Looser threshold (0.08) + smaller rootMargin so elements near the fold still trigger.
+ * On the home page (/) the Preloader component handles the initial hero reveal
+ * via its own triggerReveal() after the curtain exits. ScrollRevealInit defers
+ * to the Preloader for elements already in the viewport so the animations play
+ * correctly instead of being skipped.
  */
 export default function ScrollRevealInit() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Check if the Preloader is still active (it sets this attribute on <body>)
+    const preloaderActive = () =>
+      document.body.hasAttribute("data-preloader-active");
+
     const timer = setTimeout(() => {
       const els = document.querySelectorAll(
         ".reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-img"
@@ -40,11 +43,17 @@ export default function ScrollRevealInit() {
         // Reset for clean page transitions
         el.classList.remove("is-visible");
 
-        // Immediately reveal elements already visible on screen (hero content on refresh)
         const rect = el.getBoundingClientRect();
-        const alreadyInView = rect.top < window.innerHeight - 20 && rect.bottom > 0;
+        const alreadyInView =
+          rect.top < window.innerHeight - 20 && rect.bottom > 0;
+
         if (alreadyInView) {
-          el.classList.add("is-visible");
+          // If the Preloader is still running, do NOT instantly show it —
+          // the Preloader's triggerReveal() will animate it in after exit.
+          if (!preloaderActive()) {
+            el.classList.add("is-visible");
+          }
+          // If preloader is active, just let it be — triggerReveal handles it.
         } else {
           observer.observe(el);
         }

@@ -457,7 +457,7 @@
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
           .contact-section {
               zoom: .6;
-        max-width: 2157px;
+        max-width: 2192px;
         margin-left: 1px;
         padding: 164px 1%;
     }
@@ -804,7 +804,7 @@ margin-left: -8px;
        .contact-image {
         width: clamp(275px, 91%, 400px);
         margin-top: -186px;
-        margin-left: -66px;
+        margin-left: -78px;
         position: static;
     }
     .icon-circle {
