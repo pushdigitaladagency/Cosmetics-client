@@ -157,9 +157,16 @@ export default function Navbar(){
     return (
 <>
 <nav className={`navbar ${isMenuOpen ? "active" : ""} ${scrolled ? "scrolled" : ""}`}>
-        <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); scrollTo("home"); }}>
-          <img src={asset("/images/Organic_logo.svg")} alt="logo"  />
-        </a>
+        <a
+    href="https://organicheritage.store"
+    className="logo"
+    rel="noopener noreferrer"
+  >
+    <img
+      src={asset("/images/Organic_logo.svg")}
+      alt="logo"
+    />
+  </a>
 
         <button 
           className="menu-toggle" 

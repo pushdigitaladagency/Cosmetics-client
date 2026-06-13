@@ -737,8 +737,8 @@ const ProductDetails = ({
                   style={{ textDecoration: "none" }}
                 >
                   <div className="related-card">
-                    <div className="related-image">
-                      <img src={asset(`/images/${rp.image}`)} alt={rp.name} loading="lazy" decoding="async" />
+                    <div className="related-image shimmer-wrap">
+                      <img src={asset(`/images/${rp.image}`)} alt={rp.name} loading="lazy" decoding="async" className="shimmer-img" onLoad={e => e.currentTarget.classList.add('img-loaded')} />
                     </div>
                     <h4>{rp.name}</h4>
                   </div>

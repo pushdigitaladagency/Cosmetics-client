@@ -706,7 +706,7 @@ body {
 
 .pp {
   /* background: #f7f7f3; */
- padding: 82px 84px;
+ padding: 82px 157px;
   /* margin-left: 30px; */
 }
 
@@ -762,7 +762,7 @@ body {
   background: #fff;
   border-radius: 28px;
   width: 455px;
-  height: 546px;
+  height: 511px;
   transition: all .3s;
   overflow: hidden;
   box-shadow: 0 10px 25px #0000000a;
@@ -1449,7 +1449,7 @@ body {
 
   .pp-card {
     width: 97%;
-    height: clamp(338px, 39vw, 556px);
+    height: clamp(338px, 34vw, 556px);
   }
 
   .sc {
@@ -1460,6 +1460,7 @@ body {
   .sc-content {
     padding: clamp(40px, 5vw, 60px) clamp(30px, 4vw, 50px);
   }
+  
 
   .faq {
     gap: clamp(30px, 4vw, 50px);

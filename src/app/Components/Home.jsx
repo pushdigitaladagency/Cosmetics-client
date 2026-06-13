@@ -873,9 +873,9 @@ export default function Home() {
 
                 <p>{item.question}</p>
 
-                <span>
-                  {openIndex === index ? "−" : "⌄"}
-                </span>
+               <span>
+  {openIndex === index ? "⌃" : "⌄"}
+</span>
 
               </div>
 
