@@ -719,13 +719,13 @@ export default function Home() {
           </Link>
 
           {/* CARD 5 */}
-          <Link href="/products/face-brightening-night-moisturizer-using-rosehip-seed-oil" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/topioca-sanitary-pads" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src={asset("/images/rosehip-night-moisturizer.svg")}
-                alt="face cream"
+                src={asset("/images/tapioca-sanitary-pads.svg")}
+                alt="sanitary pads"
                 loading="lazy"
                 decoding="async"
               />
@@ -734,11 +734,11 @@ export default function Home() {
             <div className="pp-content">
 
               <h3>
-                Face Brightening Moisturizer
+              Sanitary Pads
               </h3>
 
               <p>
-                REDUCES DARK SPOTS
+                COMFORTABLE PROTECTION
               </p>
 
             </div>
