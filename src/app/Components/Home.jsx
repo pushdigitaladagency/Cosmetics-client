@@ -719,7 +719,7 @@ export default function Home() {
           </Link>
 
           {/* CARD 5 */}
-          <Link href="/products/topioca-sanitary-pads" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link href="/products/sanitary-pads-made-with-tapioca-fiber-100-plant-based" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="pp-card">
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
