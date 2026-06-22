@@ -23,10 +23,10 @@ const CATCODE_TO_SLUG = {
   cat004: "hygiene",
 };
 
-const ProductDetails = ({
+export default function ProductDetails({
   initialProduct          = null, // pre-fetched by page.js (server)
   initialRelatedProducts  = [],   // pre-fetched by page.js via /api/categories/:slug/products
-}) => {
+}) {
   const params = useParams();
   const router = useRouter();
 
@@ -750,6 +750,4 @@ const ProductDetails = ({
       </section>
     </div>
   );
-};
-
-export default ProductDetails;
+}
